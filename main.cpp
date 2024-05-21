@@ -5,12 +5,13 @@
 using namespace std;
 using namespace sf;
 
-Ronda rondas;
+vector <Ronda> rondas;
 vector <Rectangle>rectangulos;
 float speedX=1.f;
 float speedY=1.f;
 int main()
 {
+    Ronda ron1;
     RenderWindow window(VideoMode(1200, 1000), "SFML works!");
     
     
@@ -37,22 +38,19 @@ Rectangle rect(Vector2f(60.f,30.f),window);
              if(event.mouseButton.button== Mouse::Right){
             for(auto &r : rectangulos){
             r.changeColorIfClicked(Mouse::getPosition(window));
-            rondas.disparaBala();
-        }
+            }
+            ron1.disparaBala();
              }
             }
         }
 
 //entra al if si el click iquerido esta presionado
         if(Mouse::isButtonPressed(Mouse::Left));
-
-        window.clear();
+         window.clear();
         for(auto &r: rectangulos){
             r.update();
             r.drawTo(window);
         }
-        // rect.update();
-        // rect.drawTo(window);
         window.display();
     }
 

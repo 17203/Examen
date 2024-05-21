@@ -1,5 +1,5 @@
 #include "Rrectangle.hpp"
-
+#include "Rondas.hpp"
 Rectangle::Rectangle(Vector2f size, RenderWindow &window){
     this->shape = RectangleShape(size);
     this->shape.setPosition({rand()%1200,940});
@@ -23,7 +23,7 @@ void Rectangle::update(){
             this->shape.setOutlineColor(Color::White);
             this->rebotesx++;
     }
-    if(this->vivo == true){
+    if(this->vivo == true){// Aplica solo si el pato esta muerto(color verde del cuadro)
     if(shape.getPosition().y+shape.getSize().y>=1000|| shape.getPosition().y<0){
             
             this->speed.y*= -1;
@@ -31,7 +31,7 @@ void Rectangle::update(){
             this->rebotesy++;
         }
     }else if(shape.getPosition().y+shape.getSize().y>=1000){
-        speed.y=0;
+        speed.y=0;//no desaparece de pantalla estatico abajo
     }
     if(this->rebotesy>5){
        if(this->shape.getPosition().y<=0){
