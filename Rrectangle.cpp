@@ -10,9 +10,11 @@ Rectangle::Rectangle(Vector2f size, RenderWindow &window){
     this->shape.setOutlineColor(Color::Cyan);
     this->rebotesx=0;
     this->rebotesy=0;
+    this->vivo=true;
 }
 
 void Rectangle::update(){
+    
     this->speed-= this->acc;
     this->shape.move(this->speed);
     if(shape.getPosition().x+shape.getSize().x>=1200|| shape.getPosition().x<0){
@@ -21,22 +23,28 @@ void Rectangle::update(){
             this->shape.setOutlineColor(Color::White);
             this->rebotesx++;
     }
+    if(this->vivo == true){
     if(shape.getPosition().y+shape.getSize().y>=1000|| shape.getPosition().y<0){
             
             this->speed.y*= -1;
             this->shape.setOutlineColor(Color::Green);
             this->rebotesy++;
         }
+    }else if(shape.getPosition().y+shape.getSize().y>=1000){
+        speed.y=0;
+    }
     if(this->rebotesy>5){
-       if(shape.getPosition().y<=0){
-            shape.setPosition(-1000,-1000);
+       if(this->shape.getPosition().y<=0){
+            this->shape.setPosition(-1000,-1000);
        }
     }
-    else if(this->rebotesy>1){
-       if(shape.getPosition().y+shape.getSize().y>=600){
-        rebotesy++;
+    if(this->vivo == true){
+    if(this->rebotesy>1){
+       if(this->shape.getPosition().y+this->shape.getSize().y>=600){
+        this->rebotesy++;
         this->speed.y*= -1;}
     }
+}
 }
 void Rectangle::drawTo(RenderWindow &window){
     window.draw(this->shape);
@@ -51,5 +59,8 @@ void Rectangle::changeColorIfClicked(Vector2i position){
     int mouseY = position.y;
     if(mouseX>=x && mouseX <=x+w && mouseY>=y && mouseY<=y+h){
         this->shape.setFillColor(Color::Green);
+        this->vivo=false;
+        this->speed.y=4;
+        this->speed.x=0;
+        }
     }
-}

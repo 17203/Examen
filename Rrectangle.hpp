@@ -11,13 +11,13 @@ private:
     RectangleShape shape;
     int rebotesx;
     int rebotesy;
+    bool vivo;
 public:
     Rectangle(Vector2f size,RenderWindow &window);
 
     void changeColorIfClicked(Vector2i position);
     void update();
     void drawTo(RenderWindow &window);
-
 
 };
 

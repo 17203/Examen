@@ -1,10 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include "Rrectangle.hpp"
+#include "Rondas.hpp"
 #include <vector>
 using namespace std;
 using namespace sf;
 
-
+Ronda rondas;
 vector <Rectangle>rectangulos;
 float speedX=1.f;
 float speedY=1.f;
@@ -36,6 +37,7 @@ Rectangle rect(Vector2f(60.f,30.f),window);
              if(event.mouseButton.button== Mouse::Right){
             for(auto &r : rectangulos){
             r.changeColorIfClicked(Mouse::getPosition(window));
+            rondas.disparaBala();
         }
              }
             }
