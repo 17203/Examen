@@ -10,10 +10,10 @@ float speedX=1.f;
 float speedY=1.f;
 int main()
 {
-    RenderWindow window(VideoMode(800, 600), "SFML works!");
+    RenderWindow window(VideoMode(1200, 1000), "SFML works!");
     
     
-    window.setFramerateLimit(50);
+    window.setFramerateLimit(120);
 
 Rectangle rect(Vector2f(60.f,30.f),window);
 
@@ -27,8 +27,8 @@ Rectangle rect(Vector2f(60.f,30.f),window);
                 window.close();
             if (event.type==Event::MouseButtonPressed){
                 if(event.mouseButton.button== Mouse::Left){
-                    float x=float(rand()%100);
-                    float y=float(rand()%100);
+                    float x=float(50);
+                    float y=float(50);
                     Rectangle r= Rectangle (Vector2f(x,y),window);
                     rectangulos.push_back(r);
                     r.drawTo(window);

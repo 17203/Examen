@@ -9,6 +9,8 @@ private:
     Vector2f speed;
     Vector2f acc;
     RectangleShape shape;
+    int rebotesx;
+    int rebotesy;
 public:
     Rectangle(Vector2f size,RenderWindow &window);
 
