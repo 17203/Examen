@@ -14,7 +14,7 @@ Ronda();
 void disparaBala();
 void update();
 void drawTo(RenderWindow &window);
-
+void spawn();
 };
 
 #endif
