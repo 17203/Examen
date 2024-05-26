@@ -1,28 +1,33 @@
 #include "Rondas.hpp"
+#include <SFML/Graphics.hpp>
 
 Ronda::Ronda(){
-    this->balas=3;
-    this->puntuacion=0;
-    this->enemigos=0;
+    this->balas = 3;
+    this->puntuacion = 0;
+    this->enemigos = 0;
 }
 
 void Ronda::update(){
-    
-}
-void Ronda::drawTo(RenderWindow &window){
-    RectangleShape shape;
-    shape.setFillColor(Color::White);
-    shape.setPosition(1150, 150);
-    shape.setSize(Vector2f(30, 100));
-
-    window.draw(this->shape);
-
+    if (balas == 0) {
+        balas = 3;
+        puntuacion++;//se incrementa puntuación para probar que el codigo pase de ronda
+    }
 }
 
-void Ronda::disparaBala(){//si se llega al limite de balas ya no dispara y da una advertencia
-    if(balas>0){
-    balas--;}
-    else{
-    //implementar un fin de ronda
+void Ronda::drawTo(RenderWindow &window){// representacion de balas
+    for (int i = 0; i < balas; i++) {
+        RectangleShape shape;
+        shape.setFillColor(Color::White);
+        shape.setPosition(1150, 150 + i * 120);
+        shape.setSize(Vector2f(30, 100));
+        window.draw(shape);
+    }
+}
+
+void Ronda::disparaBala(){//Comprobación de balas
+    if (balas > 0) {
+        balas--;
+    } else {//mismo que en drawTo
+        balas = 3;
     }
 }
