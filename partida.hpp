@@ -1,12 +1,14 @@
-#ifndef rondas_h
-#define rondas_h
+#ifndef partida_h
+#define partida_h
 
 class Partida{
 private: 
 int rondas;
 bool juegoSigue;
+int prob;
 public:
 
+Partida(int r,bool JS);
 void jugar();
 };
 

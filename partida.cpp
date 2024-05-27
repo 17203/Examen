@@ -1,16 +1,25 @@
+#include "partida.hpp"
 #include "Rondas.hpp"
+#include "Rrectangle.hpp"
 #include <SFML/Graphics.hpp>
 
+Partida::Partida(int r,bool JS){
+    rondas=r;
+    juegoSigue=JS;
+    prob=rand()%5;
+}
 Ronda::Ronda(){
     this->balas = 3;
     this->puntuacion = 0;
     this->enemigos = 0;
+    this->cont = 0;
 }
 
 void Ronda::update(){
     if (balas == 0) {
         balas = 3;
         puntuacion++;//se incrementa puntuación para probar que el codigo pase de ronda
+        this->cont++;
     }
 }
 
@@ -29,5 +38,8 @@ void Ronda::disparaBala(){//Comprobación de balas
         balas--;
     } else {//mismo que en drawTo
         balas = 3;
+        //drawTo(RenderWindow &window){//spawnea un nuevo enemigo cada nueva ronda
+      //   window.draw(this->shape);
+      //  }
     }
 }

@@ -9,6 +9,7 @@ private:
    int balas;
    int puntuacion;
    int enemigos;
+   int cont;
 public:
 Ronda();
 void disparaBala();

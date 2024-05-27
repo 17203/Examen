@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
-class Rectangle{
+class Pato1{
 private:
     Vector2f speed;
     Vector2f acc;
@@ -13,12 +13,10 @@ private:
     int rebotesy;
     bool vivo;
 public:
-    Rectangle(Vector2f size,RenderWindow &window);
-
+    Pato1(Vector2f size,RenderWindow &window);
     void changeColorIfClicked(Vector2i position);
     void update();
     void drawTo(RenderWindow &window);
 
 };
-
 #endif

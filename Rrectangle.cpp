@@ -1,9 +1,10 @@
 #include "Rrectangle.hpp"
 #include "Rondas.hpp"
-Rectangle::Rectangle(Vector2f size, RenderWindow &window){
+Pato1::Pato1(Vector2f size, RenderWindow &window){
     this->shape = RectangleShape(size);
     this->shape.setPosition({rand()%1200,940});
     this->shape.setFillColor(Color::Red);
+    //this->speed=Vector2f(6.f,6.f);
     this->speed=Vector2f(4.f,4.f);
     this->acc=Vector2f(0.f, 0.f);
     this->shape.setOutlineThickness(3);
@@ -12,8 +13,7 @@ Rectangle::Rectangle(Vector2f size, RenderWindow &window){
     this->rebotesy=0;
     this->vivo=true;
 }
-
-void Rectangle::update(){
+void Pato1::update(){
     
     this->speed-= this->acc;
     this->shape.move(this->speed);
@@ -46,11 +46,11 @@ void Rectangle::update(){
     }
 }
 }
-void Rectangle::drawTo(RenderWindow &window){
+void Pato1::drawTo(RenderWindow &window){
     window.draw(this->shape);
 }
 
-void Rectangle::changeColorIfClicked(Vector2i position){
+void Pato1::changeColorIfClicked(Vector2i position){
     float x =this->shape.getPosition().x;
     float y = this->shape.getPosition().y;
     float w = this-> shape.getSize().x;

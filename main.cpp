@@ -13,7 +13,7 @@ int main()
 
     window.setFramerateLimit(120);
 
-    vector<Rectangle> rectangulos;
+    vector<Pato1> patos;
 
     while (window.isOpen())
     {
@@ -29,16 +29,16 @@ int main()
                 {
                     float x = float(50);
                     float y = float(50);
-                    Rectangle r = Rectangle(Vector2f(x, y), window);
-                    rectangulos.push_back(r);
-                    r.drawTo(window);
+                    Pato1 p = Pato1(Vector2f(x, y), window);
+                    patos.push_back(p);
+                    p.drawTo(window);
                 }
 
                 if (event.mouseButton.button == Mouse::Right)
                 {
-                    for (auto &r : rectangulos)
+                    for (auto &p : patos)
                     {
-                        r.changeColorIfClicked(Mouse::getPosition(window));
+                        p.changeColorIfClicked(Mouse::getPosition(window));
                     }
                     ron1.disparaBala();
                 }
@@ -46,10 +46,10 @@ int main()
         }
 
         window.clear();
-        for (auto &r : rectangulos)
+        for (auto &p : patos)
         {
-            r.update();
-            r.drawTo(window);
+            p.update();
+            p.drawTo(window);
         }
         ron1.drawTo(window);//balas de la ronda actual
         window.display();
