@@ -4,8 +4,9 @@ Pato1::Pato1(Vector2f size, RenderWindow &window){
     this->shape = RectangleShape(size);
     this->shape.setPosition({rand()%1200,940});
     this->shape.setFillColor(Color::Red);
-    //this->speed=Vector2f(6.f,6.f);
-    this->speed=Vector2f(4.f,4.f);
+    if(rand()%5==2){
+    this->speed=Vector2f(6.f,6.f);}
+    else{this->speed=Vector2f(4.f,4.f);}
     this->acc=Vector2f(0.f, 0.f);
     this->shape.setOutlineThickness(3);
     this->shape.setOutlineColor(Color::Cyan);
