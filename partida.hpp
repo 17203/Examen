@@ -9,7 +9,7 @@ int prob;
 public:
 
 Partida(int r,bool JS);
-void jugar();
+void jugar(RenderWindow &window);
 };
 
 

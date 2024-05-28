@@ -21,5 +21,8 @@
                 "isDefault": true
             }
         }
-    ]
+    ],
+    "files.associations": {
+        "vector": "cpp"
+    }
 }
