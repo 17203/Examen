@@ -14,7 +14,7 @@ private:
     bool vivo;
 public:
     Pato1(Vector2f size,RenderWindow &window);
-    void changeColorIfClicked(Vector2i position);
+    bool disparoAcertado(Vector2i position);
     void update();
     void drawTo(RenderWindow &window);
 

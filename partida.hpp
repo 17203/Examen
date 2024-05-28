@@ -1,6 +1,9 @@
 #ifndef partida_h
 #define partida_h
 
+#include "Rrectangle.hpp"
+#include "Rondas.hpp"
+
 class Partida{
 private: 
 int rondas;

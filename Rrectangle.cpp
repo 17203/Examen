@@ -52,7 +52,7 @@ void Pato1::drawTo(RenderWindow &window){
     window.draw(this->shape);
 }
 
-void Pato1::changeColorIfClicked(Vector2i position){
+bool Pato1::disparoAcertado(Vector2i position){
     float x =this->shape.getPosition().x;
     float y = this->shape.getPosition().y;
     float w = this-> shape.getSize().x;
@@ -64,5 +64,7 @@ void Pato1::changeColorIfClicked(Vector2i position){
         this->vivo=false;
         this->speed.y=4;
         this->speed.x=0;
+        return true;
         }
+    else return false;
     }

@@ -38,7 +38,7 @@ int main()
                 {
                     for (auto &p : patos)
                     {
-                        p.changeColorIfClicked(Mouse::getPosition(window));
+                        p.disparoAcertado(Mouse::getPosition(window));
                     }
                     ron1.disparaBala();
                 }
@@ -76,7 +76,9 @@ float x = float(50);
 void Partida::jugar(RenderWindow &window){
     for (int i=0; i!=10; i++){
     crearPato(window);
+    if(0==0/*p.disparoAcertado==true*/){
 
+    }
 
     }
 
@@ -107,12 +109,9 @@ void Ronda::drawTo(RenderWindow &window){// representacion de balas
 }
 
 void Ronda::disparaBala(){//Comprobación de balas
-    if (balas > 0) {
-        balas--;
-    } else {//mismo que en drawTo
-        balas = 3;
-        //drawTo(RenderWindow &window){//spawnea un nuevo enemigo cada nueva ronda
-      //   window.draw(this->shape);
-      //  }
-    }
+    if (this->balas > 0) this->balas--;
+}
+
+void Ronda::reiniciarBalas(){
+    this->balas=3;
 }
