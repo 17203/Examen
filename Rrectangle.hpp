@@ -11,8 +11,8 @@ private:
     RectangleShape shape;
     int rebotesx;
     int rebotesy;
-    bool vivo;
 public:
+    bool vivo;
     Pato1(Vector2f size,RenderWindow &window);
     bool disparoAcertado(Vector2i position);
     void update();

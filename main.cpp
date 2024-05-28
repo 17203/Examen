@@ -2,6 +2,7 @@
 #include "Rondas.hpp"
 #include "Rrectangle.hpp"
 #include "partida.hpp"
+#include <iostream>
 #include <vector>
 using namespace std;
 using namespace sf;
@@ -14,7 +15,7 @@ void crearPato(RenderWindow &window);
 int main()
 {
     
-    RenderWindow window(VideoMode(1200, 1000), "SFML works!");
+    RenderWindow window(VideoMode(1200, 1000), "cazapato");
 
     window.setFramerateLimit(120);
 
@@ -36,11 +37,18 @@ int main()
 
                 if (event.mouseButton.button == Mouse::Right)
                 {
+                    ron1.disparaBala();
+                    int a=ron1.disparaBala();
+                    if(a<0){
                     for (auto &p : patos)
                     {
                         p.disparoAcertado(Mouse::getPosition(window));
+                        if(p.disparoAcertado(Mouse::getPosition(window))==true && p.vivo == false){
+                            ron1.rondaTerminada();
+                            
+                        }
                     }
-                    ron1.disparaBala();
+                 }   
                 }
             }
         }
@@ -53,7 +61,7 @@ int main()
         }
         ron1.drawTo(window);//balas de la ronda actual
         window.display();
-        ron1.update();//reinincia rondnas
+        ron1.update();//reinincia rondas
     }
 
     return 0;
@@ -66,20 +74,17 @@ Partida::Partida(int r,bool JS){
     prob=rand()%5;
 }
 
-void crearPato(RenderWindow &window){
-float x = float(50);
+    void crearPato(RenderWindow &window){
+    float x = float(50);
     float y = float(50);
     Pato1 p = Pato1(Vector2f(x, y), window);
     patos.push_back(p);
     p.drawTo(window);
 }
 void Partida::jugar(RenderWindow &window){
-    for (int i=0; i!=10; i++){
-    crearPato(window);
-    if(0==0/*p.disparoAcertado==true*/){
-
-    }
-
+    for(int i=0; i!=10; i++){
+        crearPato(window);
+    
     }
 
 };
@@ -97,7 +102,20 @@ void Ronda::update(){
         this->cont++;
     }
 }
+int Ronda::disparaBala(){//Comprobación de balas
+    if (this->balas > 0) {
+    this->balas--;}
+    return this->balas;
+}
 
+void Ronda::reiniciarBalas(){
+    this->balas=3;
+}
+void Ronda::rondaTerminada(){
+     puntuacion++;
+     reiniciarBalas();
+    cout << "ronda terminada"<<endl;
+}
 void Ronda::drawTo(RenderWindow &window){// representacion de balas
     for (int i = 0; i < balas; i++) {
         RectangleShape shape;
@@ -108,10 +126,3 @@ void Ronda::drawTo(RenderWindow &window){// representacion de balas
     }
 }
 
-void Ronda::disparaBala(){//Comprobación de balas
-    if (this->balas > 0) this->balas--;
-}
-
-void Ronda::reiniciarBalas(){
-    this->balas=3;
-}

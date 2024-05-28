@@ -13,11 +13,12 @@ private:
    int cont;
 public:
 Ronda();
-void disparaBala();
+int disparaBala();
 void reiniciarBalas();
 void update();
 void drawTo(RenderWindow &window);
 void spawn();
+void rondaTerminada();
 };
 
 #endif
