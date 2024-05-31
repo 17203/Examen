@@ -1,24 +1,26 @@
-#ifndef rondas_h
-#define rondas_h
+#ifndef RONDAS_H
+#define RONDAS_H
 
-#include "Rrectangle.hpp"
 #include <SFML/Graphics.hpp>
+
 using namespace sf;
 
-class Ronda{
+class Ronda
+{
 private:
-   int balas;
-   int puntuacion;
-   int enemigos;
-   int cont;
+    int balas;
+    int puntuacion;
+    int enemigos;
+    int cont;
+
 public:
-Ronda();
-int disparaBala();
-void reiniciarBalas();
-void update();
-void drawTo(RenderWindow &window);
-void spawn();
-void rondaTerminada();
+    Ronda();
+    int disparaBala();
+    void reiniciarBalas();
+    void update();
+    void drawTo(RenderWindow &window);
+    void rondaTerminada();
+    int getBalas() const;
 };
 
 #endif
