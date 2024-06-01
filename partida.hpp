@@ -1,6 +1,7 @@
 #ifndef PARTIDA_H
 #define PARTIDA_H
 
+#include <SFML/Graphics.hpp>
 #include "Rrectangle.hpp"
 #include "Rondas.hpp"
 
@@ -13,7 +14,7 @@ private:
 
 public:
     Partida(int r, bool JS);
-    void jugar(RenderWindow &window);
+    void jugar(sf::RenderWindow &window);
 };
 
 #endif

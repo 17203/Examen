@@ -1,10 +1,10 @@
 #include "Rrectangle.hpp"
-#include <SFML/Graphics.hpp>
+#include <cstdlib> // for rand()
 
 Pato1::Pato1(Vector2f size, RenderWindow &window)
 {
     shape = RectangleShape(size);
-    shape.setPosition({rand() % 1200, 940});
+    shape.setPosition({ static_cast<float>(rand() % 1200), 940.0f });
     shape.setFillColor(Color::Red);
     if (rand() % 5 == 2)
     {
@@ -33,7 +33,7 @@ void Pato1::update()
         shape.setOutlineColor(Color::White);
         rebotesx++;
     }
-    if (vivo == true)
+    if (vivo)
     {
         if (shape.getPosition().y + shape.getSize().y >= 1000 || shape.getPosition().y < 0)
         {
@@ -44,25 +44,16 @@ void Pato1::update()
     }
     else if (shape.getPosition().y + shape.getSize().y >= 1000)
     {
-        speed.y = 0; // no desaparece de pantalla estatico abajo
+        speed.y = 0;
     }
-    if (rebotesy > 5)
+    if (rebotesy > 5 && shape.getPosition().y <= 0)
     {
-        if (shape.getPosition().y <= 0)
-        {
-            shape.setPosition(-1000, -1000);
-        }
+        shape.setPosition(-1000, -1000);
     }
-    if (vivo == true)
+    if (vivo && rebotesy > 1 && shape.getPosition().y + shape.getSize().y >= 600)
     {
-        if (rebotesy > 1)
-        {
-            if (shape.getPosition().y + shape.getSize().y >= 600)
-            {
-                rebotesy++;
-                speed.y *= -1;
-            }
-        }
+        rebotesy++;
+        speed.y *= -1;
     }
 }
 
